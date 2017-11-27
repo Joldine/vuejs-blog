@@ -4,7 +4,7 @@
     </div>
     <hr>
     <div v-for="article in articleList" class="article-list-item">
-      <div @click="goToContent(article.num)" class="article-list-item-title">
+      <div @click="goToContent(article.number)" class="article-list-item-title">
         <span>{{ article.title }}</span>
       </div>
       <div class="article-list-item-content">
@@ -34,14 +34,14 @@ export default {
         response.data.forEach(article => this.articleList.push(
           {
             'title': article.title,
-            'content': article.body.substring(0, 16) + '...',
-            'num': article.number
+            'content': article.body.substring(0, 20) + '...',
+            'number': article.number
           }
         ))
       })
     },
-    goToContent (num) {
-      this.$router.push('/article/' + num)
+    goToContent (number) {
+      this.$router.push('/article/' + number)
     }
   }
 }

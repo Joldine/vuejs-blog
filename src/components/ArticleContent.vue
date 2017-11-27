@@ -34,14 +34,15 @@ export default {
   },
   computed: {
     compiledMarkdown: function () {
-      return marked(this.article.content).split(/<!--\s*\w{1,9}\s*-->/g)[0]
+      return marked(this.article.content, { sanitize: true, breaks: true })
+      // return marked(this.article.content).split(/<!--\s*\w{1,9}\s*-->/g)[0]
     }
   },
   methods: {
     getArticle () {
       getArticleApi(this.$route.params.number).then(response => {
-        this.article.title = response.data[0].title
-        this.article.content = response.data[0].body
+        this.article.title = response.data.title
+        this.article.content = response.data.body
       })
     },
     goToList () {
@@ -51,7 +52,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .content-header {
   text-align: left;
 }
@@ -67,5 +68,17 @@ export default {
 }
 .content {
   text-align: left;
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+code {
+  padding: 0;
+  font-size: 12px;
+  color: #f66;
+  background-color: transparent;
 }
 </style>

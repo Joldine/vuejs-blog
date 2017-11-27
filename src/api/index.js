@@ -18,8 +18,7 @@ export function getArticleListApi ({ page = 1, size = 5 }) {
 
 export function getArticleApi (number) {
   const params = {
-    number: number,
     access_token: ACCESS_TOKEN
   }
-  return axios.get(API_ROOT + '/repos/' + OWNER + '/' + REPO + '/issues', { params })
+  return axios.get(API_ROOT + '/repos/' + OWNER + '/' + REPO + '/issues/' + number, { params })
 }
