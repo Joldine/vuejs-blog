@@ -43,6 +43,7 @@ export default {
       getArticleApi(this.$route.params.number).then(response => {
         this.article.title = response.data.title
         this.article.content = response.data.body
+        document.title = this.article.title
       })
     },
     goToList () {
@@ -76,8 +77,6 @@ export default {
   padding: 0 20px;
 }
 code {
-  padding: 0;
-  font-size: 12px;
   color: #f66;
   background-color: transparent;
 }

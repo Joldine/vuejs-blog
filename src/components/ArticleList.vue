@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     getArticleList () {
+      document.title = 'Joldnine | Blog'
       const pagination = { page: 1, size: 5 }
       getArticleListApi(pagination).then(response => {
         response.data.forEach(article => this.articleList.push(
