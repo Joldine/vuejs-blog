@@ -1,4 +1,4 @@
-# github-blog
+# vuejs-blog
 
 > A blog system using github api and vuejs
 
