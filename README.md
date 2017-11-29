@@ -1,6 +1,6 @@
 # vuejs-blog
 
-> A blog system using github api and vuejs
+> The simplest single page application blog using `github issue api` and `vuejs`
 
 ## Build Setup
 
