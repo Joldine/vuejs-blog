@@ -69,6 +69,7 @@ export default {
 .content {
   text-align: left;
   display: inline-block;
+  width: 100%;
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
