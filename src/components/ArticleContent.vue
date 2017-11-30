@@ -35,7 +35,6 @@ export default {
   computed: {
     compiledMarkdown: function () {
       return marked(this.article.content, { sanitize: true, breaks: true })
-      // return marked(this.article.content).split(/<!--\s*\w{1,9}\s*-->/g)[0]
     }
   },
   methods: {
@@ -70,11 +69,10 @@ export default {
 .content {
   text-align: left;
   display: inline-block;
-  width: 70%;
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 code {
   color: #f66;

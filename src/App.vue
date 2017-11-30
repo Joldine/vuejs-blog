@@ -26,8 +26,9 @@ export default {
   color: #2c3e50;
 }
 .el-container {
+  min-width: 18em;
   margin: auto;
-  max-width: 70em;
+  max-width: 60em;
 }
 .el-header {
   color: #333;
