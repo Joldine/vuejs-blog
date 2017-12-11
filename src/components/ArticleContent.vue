@@ -16,35 +16,24 @@
 </template>
 
 <script>
-import { getArticleApi } from '@/api'
 import marked from 'marked'
 
 export default {
   name: 'ArticleContent',
   data () {
     return {
-      article: {
-        title: '',
-        content: ''
-      }
+      article: {}
     }
   },
   created () {
-    this.getArticle()
+    this.article = this.$store.getters.getArticleById(this.$route.params.number)
   },
   computed: {
     compiledMarkdown: function () {
-      return marked(this.article.content, { sanitize: true, breaks: true })
+      return marked(this.article.body, { sanitize: true, breaks: true })
     }
   },
   methods: {
-    getArticle () {
-      getArticleApi(this.$route.params.number).then(response => {
-        this.article.title = response.data.title
-        this.article.content = response.data.body
-        document.title = this.article.title
-      })
-    },
     goToList () {
       this.$router.push('/')
     }
