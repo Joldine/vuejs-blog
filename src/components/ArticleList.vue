@@ -21,8 +21,14 @@
     name: 'ArticleList',
     data () {
       return {
-        articleList: [],
         loading: false
+      }
+    },
+    computed: {
+      articleList: {
+        get () {
+          return this.$store.getters.getArticles
+        }
       }
     },
     created () {
@@ -35,7 +41,7 @@
         this.$store.commit('CLEAR_ARTICLE')
         this.$store.dispatch('getArticleList', 1).then(() => {
           this.loading = false
-          this.articleList = this.$store.getters.getArticles
+          // this.articleList = this.$store.getters.getArticles
         }).catch(() => {
           this.loading = false
         })

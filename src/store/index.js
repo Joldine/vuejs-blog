@@ -31,7 +31,6 @@ const store = new Vuex.Store({
       return state.articles
     },
     getArticleById: (state) => (number) => {
-      console.log(state.articles)
       return state.articles.find(article => article.number === parseInt(number))
     }
   }
