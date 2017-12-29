@@ -1,15 +1,16 @@
 <template>
-  <div class="article-list">
+  <div>
     <div class="article-list-search">
+      <!-- TODO -->
     </div>
     <hr>
-    <el-button v-if="loading" type="primary" :loading="loading"></el-button>
+    <el-button v-if="loading" :loading="loading"></el-button>
     <div v-for="article in articleList" class="article-list-item">
       <div @click="goToContent(article.number)" class="article-list-item-title">
         <span>{{ article.title }}</span>
       </div>
       <div class="article-list-item-content">
-        <div v-html="marked(article.body)"></div>
+        <div v-html="compiledMarkdown(article.body)"></div>
       </div>
     </div>
   </div>
@@ -32,16 +33,14 @@
       }
     },
     created () {
-      document.title = 'Joldnine | Blog'
       this.initArticleList()
     },
     methods: {
       initArticleList () {
         this.loading = true
         this.$store.commit('CLEAR_ARTICLE')
-        this.$store.dispatch('getArticleList', 1).then(() => {
+        this.$store.dispatch('requestArticleList', 1).then(() => {
           this.loading = false
-          // this.articleList = this.$store.getters.getArticles
         }).catch(() => {
           this.loading = false
         })
@@ -49,20 +48,18 @@
       goToContent (number) {
         this.$router.push('/article/' + number)
       },
-      marked (body) {
-        return marked(body, { sanitize: true, breaks: true }).substring(0, 40)
+      compiledMarkdown (body) {
+        return marked(body.substring(0, body.indexOf('\n')))
       }
     }
   }
 </script>
 
 <style scoped>
-  .article-list {
-    text-align: left;
-  }
   .article-list-item {
     padding: .5em;
     margin: 1em 0;
+    text-align: left;
   }
   .article-list-item:hover {
     background-color: rgba(0, 0, 0, .05);

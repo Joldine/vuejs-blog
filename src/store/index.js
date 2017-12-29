@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getArticleListApi } from '@/api'
+import { getArticleListApi, getArticleApi } from '@/api'
 
 Vue.use(Vuex)
 
@@ -17,11 +17,22 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    getArticleList ({ commit }, page) {
+    requestArticleList ({ commit }, page) {
       const pagination = { page: page, size: 10 }
-      getArticleListApi(pagination).then(response => {
-        response.data.forEach(article => {
-          commit('ADD_ARTICLE', article)
+      return new Promise((resolve, reject) => {
+        getArticleListApi(pagination).then(response => {
+          response.data.forEach(article => {
+            commit('ADD_ARTICLE', article)
+            resolve()
+          })
+        })
+      })
+    },
+    requestArticle ({ commit }, number) {
+      return new Promise((resolve, reject) => {
+        getArticleApi(number).then(response => {
+          commit('ADD_ARTICLE', response.data)
+          resolve()
         })
       })
     }
@@ -32,6 +43,12 @@ const store = new Vuex.Store({
     },
     getArticleById: (state) => (number) => {
       return state.articles.find(article => article.number === parseInt(number))
+    },
+    isArticlesEmpty: (state) => {
+      return state.articles.length === 0
+    },
+    isArticleExisted: (state) => (number) => {
+      return state.articles.find(article => article.number === parseInt(number)) !== undefined
     }
   }
 })

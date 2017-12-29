@@ -8,6 +8,7 @@
     <div>
       <hr>
     </div>
+    <el-button v-if="loading" :loading="loading"></el-button>
     <div class="content-title">
       <span>{{ article.title }}</span>
     </div>
@@ -22,11 +23,15 @@ export default {
   name: 'ArticleContent',
   data () {
     return {
-      article: {}
+      article: {
+        body: ''
+      },
+      number: this.$route.params.number,
+      loading: true
     }
   },
   created () {
-    this.article = this.$store.getters.getArticleById(this.$route.params.number)
+    this.getArticleById()
   },
   computed: {
     compiledMarkdown: function () {
@@ -34,6 +39,17 @@ export default {
     }
   },
   methods: {
+    getArticleById () {
+      if (!this.$store.getters.isArticleExisted(this.number)) {
+        this.$store.dispatch('requestArticle', this.number).then(() => {
+          this.article = this.$store.getters.getArticleById(this.number)
+          this.loading = false
+        })
+      } else {
+        this.article = this.$store.getters.getArticleById(this.number)
+        this.loading = false
+      }
+    },
     goToList () {
       this.$router.push('/')
     }
