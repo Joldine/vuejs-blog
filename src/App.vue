@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -38,5 +38,8 @@ export default {
   font-size: 1.5em;
 }
 .el-main {
+}
+code {
+  color: #F56C6C;
 }
 </style>

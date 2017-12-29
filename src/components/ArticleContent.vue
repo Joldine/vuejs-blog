@@ -80,8 +80,4 @@ export default {
   box-sizing: border-box;
   padding: 0 10px;
 }
-code {
-  color: #f66;
-  background-color: transparent;
-}
 </style>
