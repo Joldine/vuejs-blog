@@ -5,7 +5,7 @@
     </div>
     <hr>
     <el-button v-if="loading" :loading="loading"></el-button>
-    <div v-for="article in articleList" class="article-list-item">
+    <div v-for="article in articleList" :key="article.number" class="article-list-item">
       <div @click="goToContent(article.number)" class="article-list-item-title">
         <span>{{ article.title }}</span>
       </div>
