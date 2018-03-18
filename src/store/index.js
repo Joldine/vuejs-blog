@@ -18,7 +18,7 @@ const store = new Vuex.Store({
   },
   actions: {
     requestArticleList ({ commit }, page) {
-      const pagination = { page: page, size: 10 }
+      const pagination = { page: page, size: 66 }
       return new Promise((resolve, reject) => {
         getArticleListApi(pagination).then((articles) => {
           articles.forEach(article => {

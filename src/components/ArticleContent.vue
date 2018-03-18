@@ -5,9 +5,6 @@
         Back to list
       </span>
     </div>
-    <div>
-      <hr>
-    </div>
     <el-button v-if="loading" :loading="loading"></el-button>
     <div class="content-title">
       <span>{{ article.title }}</span>
