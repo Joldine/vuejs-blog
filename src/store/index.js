@@ -20,8 +20,8 @@ const store = new Vuex.Store({
     requestArticleList ({ commit }, page) {
       const pagination = { page: page, size: 10 }
       return new Promise((resolve, reject) => {
-        getArticleListApi(pagination).then(response => {
-          response.data.forEach(article => {
+        getArticleListApi(pagination).then((articles) => {
+          articles.forEach(article => {
             commit('ADD_ARTICLE', article)
             resolve()
           })
@@ -30,8 +30,8 @@ const store = new Vuex.Store({
     },
     requestArticle ({ commit }, number) {
       return new Promise((resolve, reject) => {
-        getArticleApi(number).then(response => {
-          commit('ADD_ARTICLE', response.data)
+        getArticleApi(number).then(article => {
+          commit('ADD_ARTICLE', article)
           resolve()
         })
       })

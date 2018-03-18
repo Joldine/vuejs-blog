@@ -43,12 +43,11 @@ export default {
       if (!this.$store.getters.isArticleExisted(this.number)) {
         this.$store.dispatch('requestArticle', this.number).then(() => {
           this.article = this.$store.getters.getArticleById(this.number)
-          this.loading = false
         })
       } else {
         this.article = this.$store.getters.getArticleById(this.number)
-        this.loading = false
       }
+      this.loading = false
     },
     goToList () {
       this.$router.push('/')
