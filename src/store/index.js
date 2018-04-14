@@ -22,9 +22,11 @@ const store = new Vuex.Store({
       return new Promise((resolve, reject) => {
         getArticleListApi(pagination).then((articles) => {
           articles.forEach(article => {
-            commit('ADD_ARTICLE', article)
-            resolve()
+            if (!article.labels.find(e => e.name === 'Hide')) {
+              commit('ADD_ARTICLE', article)
+            }
           })
+          resolve()
         })
       })
     },

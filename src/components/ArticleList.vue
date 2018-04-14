@@ -67,6 +67,7 @@
     font-size: 1.3em;
     cursor: pointer;
     transition: transform .2s;
+    color: #303133;
   }
   .article-list-item-title:hover {
     color: #409EFF;
