@@ -11,9 +11,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "element-ui": "^2.2.2",
+    "element-ui": "^2.3.4",
     "marked": "^0.3.17",
     "vue": "^2.5.13",
+    "vue-fixed-header": "^1.0.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
