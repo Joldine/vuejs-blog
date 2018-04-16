@@ -18,12 +18,15 @@
         <router-view/>
       </el-col>
     </el-row>
+    <back-to-top />
   </div>
 </template>
 
 <script>
+import BackToTop from './components/BackToTop'
 export default {
-  name: 'app'
+  name: 'app',
+  components: { BackToTop }
 }
 </script>
 
@@ -36,11 +39,11 @@ export default {
   color: #606266;
 }
 .header-title {
-  font-size: 1.5em;
+  font-size: 2em;
   color: #303133;
 }
 .header-quote {
-  font-size: 0.5em;
+  font-size: 1em;
   color: #909399;
 }
 code {

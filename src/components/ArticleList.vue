@@ -17,6 +17,7 @@
 
 <script>
   import marked from 'marked'
+
   export default {
     name: 'ArticleList',
     data () {
