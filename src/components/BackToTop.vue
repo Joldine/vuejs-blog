@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style <style scoped>
+<style scoped>
   .back-to-top{
     position: fixed;
     cursor: pointer;

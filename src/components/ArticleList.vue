@@ -16,43 +16,43 @@
 </template>
 
 <script>
-  import marked from 'marked'
+import marked from 'marked'
 
-  export default {
-    name: 'ArticleList',
-    data () {
-      return {
-        loading: false
-      }
-    },
-    computed: {
-      articleList: {
-        get () {
-          return this.$store.getters.getArticles
-        }
-      }
-    },
-    created () {
-      this.initArticleList()
-    },
-    methods: {
-      initArticleList () {
-        this.loading = true
-        this.$store.commit('CLEAR_ARTICLE')
-        this.$store.dispatch('requestArticleList', 1).then(() => {
-          this.loading = false
-        }).catch(() => {
-          this.loading = false
-        })
-      },
-      goToContent (number) {
-        this.$router.push('/article/' + number)
-      },
-      compiledMarkdown (body) {
-        return marked(body.substring(0, body.indexOf('\n')))
+export default {
+  name: 'ArticleList',
+  data () {
+    return {
+      loading: false
+    }
+  },
+  computed: {
+    articleList: {
+      get () {
+        return this.$store.getters.getArticles
       }
     }
+  },
+  created () {
+    this.initArticleList()
+  },
+  methods: {
+    initArticleList () {
+      this.loading = true
+      this.$store.commit('CLEAR_ARTICLE')
+      this.$store.dispatch('requestArticleList', 1).then(() => {
+        this.loading = false
+      }).catch(() => {
+        this.loading = false
+      })
+    },
+    goToContent (number) {
+      this.$router.push('/article/' + number)
+    },
+    compiledMarkdown (body) {
+      return marked(body.substring(0, body.indexOf('\n')))
+    }
   }
+}
 </script>
 
 <style scoped>
