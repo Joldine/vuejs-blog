@@ -9,7 +9,6 @@ vue
 vuex
 vue-router
 element-ui
-axios
 marked
 ```
 Packed by `webpack`
