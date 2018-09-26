@@ -11,6 +11,9 @@
       <div class="article-list-item-content">
         <div v-html="compiledMarkdown(article.body)"></div>
       </div>
+      <div class="article-list-item-date">
+        <div>{{ article.created_at.split('T')[0] }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -76,5 +79,8 @@ export default {
   }
   .article-list-item-content {
     font-size: 0.9em;
+  }
+  .article-list-item-date {
+    font-size: 0.6em;
   }
 </style>
