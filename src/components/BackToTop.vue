@@ -1,9 +1,11 @@
 <template>
   <transition>
     <div class="back-to-top" :style="`bottom:${this.bottom};right:${this.right};`" v-show="visible" @click="backToTop">
-      <el-tag type="info" title="Back to top">
-        <i class="el-icon-arrow-up"></i>
-      </el-tag>
+      <el-tooltip class="item" effect="light" content="Back to top" placement="top">
+        <el-tag>
+          <i class="el-icon-arrow-up"></i>
+        </el-tag>
+      </el-tooltip>
     </div>
   </transition>
 </template>
@@ -14,15 +16,15 @@ export default {
   props: {
     visibleOffset: {
       type: [String, Number],
-      default: 100
+      default: 50
     },
     right: {
       type: String,
-      default: '32px'
+      default: '64px'
     },
     bottom: {
       type: String,
-      default: '40px'
+      default: '80px'
     }
   },
   data () {
