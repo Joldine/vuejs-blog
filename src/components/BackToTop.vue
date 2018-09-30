@@ -1,11 +1,9 @@
 <template>
   <transition>
     <div class="back-to-top" :style="`bottom:${this.bottom};right:${this.right};`" v-show="visible" @click="backToTop">
-      <el-tooltip class="item" effect="light" content="Back to top" placement="top">
-        <el-tag>
-          <i class="el-icon-arrow-up"></i>
-        </el-tag>
-      </el-tooltip>
+      <el-tag>
+        <i class="el-icon-arrow-up"></i>
+      </el-tag>
     </div>
   </transition>
 </template>
@@ -37,6 +35,7 @@ export default {
       this.visible = (window.pageYOffset > parseInt(this.visibleOffset))
     }
     window.smoothscroll = () => {
+      this.visible = false
       let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
       if (currentScroll > 0) {
         window.requestAnimationFrame(window.smoothscroll)
